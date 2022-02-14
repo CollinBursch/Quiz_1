@@ -7,3 +7,4 @@ You are required to create a virtual environment (VE), activate the virtual envi
 and install the library - Matplotlib
 
 Make sure your local and GitHub repos do not contain your VE
+

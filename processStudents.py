@@ -25,26 +25,31 @@ import csv
 
 # create a file object to open the file in read mode
 
+def main():
+    student_gpa_infile = open('student.csv', 'r') 
 
 
 # create a csv object from the file object
 
+    csv.reader = csv.reader(student_gpa_infile)
 
 #skip the header row
 
 
 #create an outfile object for the pocessed record
 
-
+    #student_gpa_outfile = open('student.csv', newline = '')
+    #csv.writer = csv.writer(student_gpa_outfile)
 
 #create a new dictionary named 'student_dict'
 
-
+    student_dict = {}
 
 #use a loop to iterate through each row of the file
+    for student in student_gpa_infile:
 
     #check if the GPA is below 3.0. If so, write the record to the outfile
-    
+        
         
 
 
