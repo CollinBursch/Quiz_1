@@ -19,6 +19,7 @@ through the logic of the problem.
 
 '''
 
+## = what I did and atual code is what we did in class
 
 import csv
 
@@ -26,13 +27,13 @@ import csv
 # create a file object to open the file in read mode
 
 def main():
-    student_gpa_infile = open('student.csv', 'r') 
-
+    ##student_gpa_infile = open('student.csv', 'r') 
+    file_obj = open('student.txt', 'r')
 
 # create a csv object from the file object
 
-    csv.reader = csv.reader(student_gpa_infile)
-
+    #csv.reader = csv.reader(student_gpa_infile)
+    csv = csv.reader(file_obj, delimeter)
 #skip the header row
     next()
 
@@ -63,8 +64,8 @@ def main():
     # append the record to the dictionary with the student id as the Key
     # and the value as the GPA
     
-    csv.writer(student_dict, 'a')
-    
+    ##csv.writer(student_dict, 'a')
+    student_dict[rec[0]] = float(rec[8]) 
 
 
 
@@ -75,7 +76,8 @@ def main():
 
 #Print the student id 
 
-    print(student[1])
+    #print(student[1])
+print('Student ID:', '')
 
 #print out the corresponding GPA from the dictionary
 
