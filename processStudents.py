@@ -27,37 +27,51 @@ import csv
 # create a file object to open the file in read mode
 
 def main():
-    ##student_gpa_infile = open('student.csv', 'r') 
-    file_obj = open('student.txt', 'r')
+    student_gpa_infile = open('students.csv', 'r') 
+    #file_obj = open('student.txt', 'r')
 
 # create a csv object from the file object
 
-    #csv.reader = csv.reader(student_gpa_infile)
-    csv = csv.reader(file_obj, delimeter)
+    csv_reader = csv.reader(student_gpa_infile)
+    #csv = csv.reader(file_obj, delimeter)
 #skip the header row
-    next()
-
+    #next()
+    csv_reader.__next__()
 #create an outfile object for the pocessed record
 
-    student_gpa_outfile = open('student.csv')
-    #csv.writer = csv.writer(student_gpa_outfile)
+    #student_gpa_outfile = open('student.csv')
+    ##csv.writer = csv.writer(student_gpa_outfile)
+    student_gpa_outfile = open('students_gpa.csv', 'w', newline='')
+    csv_writer = csv.writer(student_gpa_outfile)
 
 #create a new dictionary named 'student_dict'
 
     student_dict = {}
 
 #use a loop to iterate through each row of the file
-    for student in student_gpa_infile:
+    #for student in student_gpa_infile:
+    for student in csv_reader:
+        gpa = float(student[8])
+        if gpa < 3.0:
+            csv_writer.writerow(student)
 
+        student_dict[student[0]] = float(student[8])
 
+    print(student_dict)
+    print(student_dict['567890123'])
+
+    student_gpa_infile.close()
+    student_gpa_outfile.close()
+
+main()
     #check if the GPA is below 3.0. If so, write the record to the outfile
 
-        if student[9] in student_gpa_infile > 3.0:
-            csv.writer(student_gpa_outfile, 'w' )
-            # print('GPA: ', student[9])
+        #if student[9] in student_gpa_infile > 3.0:
+           # csv.writer(student_gpa_outfile, 'w' )
+            # print('GPA: ', student[8])
             
-        else: 
-            csv.writer(student_gpa_infile'\n')
+        #else: 
+           # csv.writer(student_gpa_infile'\n')
 
 
 
@@ -65,19 +79,19 @@ def main():
     # and the value as the GPA
     
     ##csv.writer(student_dict, 'a')
-    student_dict[rec[0]] = float(rec[8]) 
+    #student_dict[rec[0]] = float(rec[8]) 
 
 
 
 
 #print the entire dictionary
 
-    print(student_dict)
+    #print(student_dict)
 
 #Print the student id 
 
     #print(student[1])
-print('Student ID:', '')
+#print('Student ID:', '')
 
 #print out the corresponding GPA from the dictionary
 
@@ -85,7 +99,7 @@ print('Student ID:', '')
 
 #close the outfile
 
-    student_gpa_outfile.close()
+    #student_gpa_outfile.close()
 
 
 
